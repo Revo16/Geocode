@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation Results</title>
+</head>
+<body>
+    <h1>Geolocation Results</h1>
+
+    <form method="post">
+        <label for="coordinates">Enter coordinates (one pair per line):</label>
+        <textarea name="coordinates" id="coordinates" rows="5" cols="50"></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if results %}
+        <h2>Results:</h2>
+        <ul>
+            {% for result in results %}
+                <li>
+                    Latitude: {{ result.latitude }}, Longitude: {{ result.longitude }}<br>
+                    Raw Address: {{ result.raw_address }}<br>
+                    City: {{ result.city }}<br>
+                    County: {{ result.county }}<br>
+                    State: {{ result.state }}<br>
+                    Country: {{ result.country }}<br>
+                    Zip Code: {{ result.zipcode }}<br>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
